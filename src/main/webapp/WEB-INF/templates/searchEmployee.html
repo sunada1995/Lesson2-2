@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Search title here</title>
+</head>
+
+<body style="background-color: aquamarine; ">
+
+    <h1  style="text-align:center;">■社員情報紹介</h1><br>
+	<p  style="text-align:center;">　検索する社員IDと社員名を入力してください</p>
+
+
+	<form th:action="@{/search}" th:method="POST" style="margin-left:38%;">
+
+		社員ID : <input type="text" name="shainId"><br>
+		社員名 : <input type="text" name="shainName" style="margin-top:1em;"><br><br>
+		<button type="submit" style="margin-left:35%; background-color:blue; color: aliceblue; border-radius:25%;">検索</button><br><br>
+ 
+
+		<table th:styleappend="${id == '社員ID'}? 'border:2px sloid black'"  style="padding-left:10%; padding-right:10%;" >
+
+           <thead>
+			<tr  th:styleappend="${id == '社員ID'}? 'background-color:#a9a9a9;'">
+
+				<td><span th:text="${id}"></span></td>
+				<td><span th:text="${name}"></span></td>
+				<td><span th:text="${emailAddress}"></span></td>
+				<td><span th:text="${process}"></span></td>
+
+			</tr>
+           </thead>
+           <tbody>
+			<tr style="background-color: aliceblue;" th:each="shain : ${shainList}">
+
+				<td><span th:text="${shain.shainId}"></span></td><!-- ここに 社員ID-->
+				<td><span th:text="${shain.shainName}"></span></td><!-- ここに 社員名-->
+				<td><span th:text="${shain.email}"></span></td><!-- ここに Eメールアドレス-->
+				<td><button style="background-color: darkgreen; color: aliceblue; border-radius:25%;" th:text="${shain.process}"></button></td><!-- ここに修正ボタン-->
+
+			</trs>
+
+           </tbody>
+		</table>
+	</form>
+
+
+</body>
+
+</html>
