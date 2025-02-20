@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,9 +52,15 @@ public class EmployeeSearchController {
 	
 	
 	@PostMapping
-	public String aaa(Model model,@RequestParam ("shainName") String name, @RequestParam("shainId") String id ) throws SQLException, Exception {
+	public String aaa(Model model,@RequestParam ("shainName") String name, @RequestParam("shainId") String id ,HttpSession session) throws SQLException, Exception {
 		
 		List<ShainList> shainlist = searchPost(name,id);
+		
+		session.setAttribute("processList", shainlist);
+		
+        int border = 2;
+		
+		model.addAttribute("border", border);
 		
 		model.addAttribute("id","社員ID");
 	    model.addAttribute("name", "社員名");
