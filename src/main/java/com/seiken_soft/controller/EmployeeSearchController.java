@@ -55,6 +55,7 @@ public class EmployeeSearchController {
 	public String aaa(Model model,@RequestParam ("shainName") String name, @RequestParam("shainId") String id ,HttpSession session) throws SQLException, Exception {
 		
 		List<ShainList> shainlist = searchPost(name,id);
+
 		
 		session.setAttribute("processList", shainlist);
 		
@@ -68,8 +69,7 @@ public class EmployeeSearchController {
 	    model.addAttribute("process", "処理");
 		    	
 	    model.addAttribute("shainList",shainlist);
-		   	          
-	    
+		
 	    return "searchEmployee";
 	}
 	

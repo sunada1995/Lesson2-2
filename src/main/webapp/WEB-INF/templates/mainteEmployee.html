@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Search title here</title>
+</head>
+
+<script>
+	function updateDialog(){
+		if(!window.confirm("更新しますか？")){
+			return;
+			}else{
+			 const button = document.getElementById('updateButton');
+			 button.setAttribute('form', 'update');
+			 form.submit();
+			}
+			
+
+	}
+	
+</script>
+
+<body style="background-color: aquamarine; text-align:center;">
+
+    <h1  style="text-align:center;">■社員情報メンテナンス</h1><br>
+
+
+	<form id="update" th:action="@{/update}" th:method="POST" style="margin-right:10% ;">
+
+		社員ID : <input type="text" name="shainId"><br>
+		社員名 : <input type="text" name="shainName" style="margin-top:1em;"><br>
+		Eメールアドレス:<input type="text" name="shainName" style="margin-top:1em;"><br>
+
+    </form>
+        <button id="updateButton" onclick="updateDialog()" name="update" style="margin-left:35%; background-color:red; color:antiquewhite; border-radius:25%;">更新</button>
+		<button type="submit" name="backPage" form="update" style="margin-left:35%; background-color:orange; color:antiquewhite; border-radius:25%;">戻る</button>
+ 	
+
+</body>
+
+</html>

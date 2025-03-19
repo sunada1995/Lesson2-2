@@ -6,6 +6,10 @@
 	<title>Search title here</title>
 </head>
 
+<script>
+	
+</script>
+
 <body style="background-color: aquamarine; text-align:center;">
 
     <h1  style="text-align:center;">■社員情報紹介</h1><br>
@@ -36,13 +40,13 @@
 			</tr>
            </thead>
            <tbody>
-			<form action ="EmployeeMainteController" method="post">
+			<form th:action ="@{/mainte}" method="GET">
 			<tr style="background-color: aliceblue; padding: 5%;" th:each="shain : ${shainList}" >
 
 				<td><span th:text="${shain.shainId}"></span></td><!-- ここに 社員ID-->
 				<td><span th:text="${shain.shainName}"></span></td><!-- ここに 社員名-->
 				<td><span th:text="${shain.email}"></span></td><!-- ここに Eメールアドレス-->
-				<td><button style="background-color: darkgreen; color: aliceblue; border-radius:25%;" th:text="${shain.process}"></button></td><!-- ここに修正ボタン-->
+				<td><button type="submit" style="background-color: darkgreen; color: aliceblue; border-radius:25%;" th:text="${shain.process}"></button></td><!-- ここに修正ボタン-->
 
 			</tr>
 </form>
