@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Search title here</title>
+	<title>社員情報メンテナンス</title>
 </head>
 
 <script>
@@ -21,21 +21,37 @@
 	
 </script>
 
-<body style="background-color: aquamarine; text-align:center;">
+<body style="background-color:lightgreen; margin: auto;">
 
     <h1  style="text-align:center;">■社員情報メンテナンス</h1><br>
 
 
+
+	
 	<form id="update" th:action="@{/update}" th:method="POST" style="margin-right:10% ;">
-
-		社員ID : <input type="text" name="shainId"><br>
-		社員名 : <input type="text" name="shainName" style="margin-top:1em;"><br>
-		Eメールアドレス:<input type="text" name="shainName" style="margin-top:1em;"><br>
-
+	   <table th:each="shain : ${shainList}" style="margin-left:30% ; float: left;" >
+	    <tr>
+		<td>社員ID : <span name="shainId" th:text="${shain.shainId}"></span></td>		
+		</tr>
+        <tr>        
+		<td>社員名 : <input type="text" name="shainName" th:value="${shain.shainName}" style="margin-top:1em;"></td>
+	    </tr>
+	    <tr>
+		<td>Eメールアドレス:<input type="text" name="emailAddress" th:value="${shain.email}" style="margin-top:1em;"></td>
+		</tr>
+  
+       </table>
+       </br></br></br></br></br>
+       <div style="text-align: center; margin-left:40% ;">
+	    <button id="updateButton" onclick="updateDialog()" name="update" style=" background-color:red; color:ghostwhite; border-radius:25%;">更新</button>
+	    <button type="submit" name="backPage" form="update" style=" background-color:orange; color:ghostwhite; border-radius:25%;">戻る</button>
+	   </div>
+       
     </form>
-        <button id="updateButton" onclick="updateDialog()" name="update" style="margin-left:35%; background-color:red; color:antiquewhite; border-radius:25%;">更新</button>
-		<button type="submit" name="backPage" form="update" style="margin-left:35%; background-color:orange; color:antiquewhite; border-radius:25%;">戻る</button>
- 	
+        
+        
+		
+ 	 
 
 </body>
 

@@ -3,50 +3,50 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Search title here</title>
+	<title>社員情報照会</title>
 </head>
 
 <script>
 	
 </script>
 
-<body style="background-color: aquamarine; text-align:center;">
+<body style="background-color: aquamarine; margin: auto;">
 
-    <h1  style="text-align:center;">■社員情報紹介</h1><br>
+    <h1  style="text-align:center;">■社員情報照会</h1><br>
 	<p  style="text-align:center;">　検索する社員IDと社員名を入力してください</p>
 
 
-	<form th:action="@{/search}" th:method="POST" style="margin-right:10% ;">
+	<form th:action="@{/search}" th:method="POST" style="margin-right:15% ;text-align: center;">
 
+       <div>
 		社員ID : <input type="text" name="shainId"><br>
 		社員名 : <input type="text" name="shainName" style="margin-top:1em;"><br><br>
 		<button type="submit" style="margin-left:35%; background-color:blue; color: aliceblue; border-radius:25%;">検索</button><br><br>
- 
-
-	
+ 	   </div>
+ 	   
 	</form>
 
     
-	<table th:border="${border}"  style="border:black; border-collapse:collapse; margin-left: 38%;" >
+	<table width="55%" th:border="${border}"  style="border:black; border-collapse:collapse; margin: auto;" >
 
-           <thead>
-			<tr  th:styleappend="${id == '社員ID'}? 'background-color:#a9a9a9;'">
+           <thead >
+			<tr  th:styleappend="${id == '社員ID'}? 'background-color:#a9a9a9; text-align: center;'">
 
-				<td><span th:text="${id}"></span></td>
-				<td><span th:text="${name}"></span></td>
-				<td><span th:text="${emailAddress}"></span></td>
-				<td><span th:text="${process}"></span></td>
+				<td width="25%"><span th:text="${id}"></span></td>
+				<td width="33%"><span th:text="${name}"></span></td>
+				<td width="35%"><span th:text="${emailAddress}"></span></td>
+				<td width="7%"><span th:text="${process}"></span></td>
 
 			</tr>
            </thead>
            <tbody>
-			<form th:action ="@{/mainte}" method="GET">
+			<form th:action ="@{/mainte}" method="POST">
 			<tr style="background-color: aliceblue; padding: 5%;" th:each="shain : ${shainList}" >
 
 				<td><span th:text="${shain.shainId}"></span></td><!-- ここに 社員ID-->
 				<td><span th:text="${shain.shainName}"></span></td><!-- ここに 社員名-->
 				<td><span th:text="${shain.email}"></span></td><!-- ここに Eメールアドレス-->
-				<td><button type="submit" style="background-color: darkgreen; color: aliceblue; border-radius:25%;" th:text="${shain.process}" name="${shain.shainId}"></button></td><!-- ここに修正ボタン-->
+				<td><button type="submit" style="background-color: darkgreen; color: aliceblue; border-radius:25%;" th:text="${shain.process}" name="shainId" th:value="${shain.shainId}"></button></td><!-- ここに修正ボタン-->
 
 			</tr>
 </form>
