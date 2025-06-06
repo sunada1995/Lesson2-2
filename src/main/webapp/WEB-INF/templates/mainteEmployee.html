@@ -31,7 +31,8 @@
 	<form id="update" th:action="@{/update}" th:method="POST" style="margin-right:10% ;">
 	   <table th:each="shain : ${shainList}" style="margin-left:30% ; float: left;" >
 	    <tr>
-		<td>社員ID : <span name="shainId" th:text="${shain.shainId}"></span></td>		
+		<td>社員ID : <span th:text="${shain.shainId}"></span></td>
+		<input type="hidden" name="shainId" id="spanValue" th:value="${shain.shainId}" />		
 		</tr>
         <tr>        
 		<td>社員名 : <input type="text" name="shainName" th:value="${shain.shainName}" style="margin-top:1em;"></td>

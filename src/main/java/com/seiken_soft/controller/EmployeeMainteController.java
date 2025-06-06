@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.seiken_soft.model.ShainList;
+import com.seiken_soft.model.impl.EmployeeSearchModelImpl;
 
 @Controller
 public class EmployeeMainteController {
@@ -25,10 +26,9 @@ public class EmployeeMainteController {
 	
 
 	public List<ShainList> shainId(String shainId) throws SQLException, Exception {
-		
-		
-		EmployeeSearchController employeeSearchController = new EmployeeSearchController();
-		List<ShainList> shainList = employeeSearchController.searchPost("", shainId);
+				
+		EmployeeSearchModelImpl employeeSearchModelImpl = new EmployeeSearchModelImpl();
+		List<ShainList> shainList = employeeSearchModelImpl.searchPost("", shainId);
 		return shainList;
 		
 	}
