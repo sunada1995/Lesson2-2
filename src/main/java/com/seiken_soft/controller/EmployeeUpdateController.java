@@ -50,8 +50,18 @@ public class EmployeeUpdateController {
 		employeeUpdateModelImpl.update(shainName, shainId, emailAddress,employeeUpdateModelImpl.getCon());	
 		EmployeeSearchModelImpl employeeSearchModelImpl = new EmployeeSearchModelImpl();
 		List<ShainList> shainList = employeeSearchModelImpl.searchPost("","");
-		model.addAllAttributes(shainList);
-	    
+		
+        int border = 2;
+		
+		model.addAttribute("border", border);
+		
+		model.addAttribute("id","社員ID");
+	    model.addAttribute("name", "社員名");
+	    model.addAttribute("emailAddress", "Eメールアドレス");
+	    model.addAttribute("process", "処理");
+		    	
+	    model.addAttribute("shainList",shainList);
+		
 	    return "searchEmployee";
     }
 }
